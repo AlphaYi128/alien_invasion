@@ -5,6 +5,7 @@ class GameStats(object):
         """初始化统计信息"""
         self.ai_settings = ai_settings
         self.game_active = False
+        self.ship_left = 0
         self.reset_stats()
 
     def reset_stats(self):

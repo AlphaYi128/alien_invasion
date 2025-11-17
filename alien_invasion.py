@@ -31,8 +31,8 @@ def run_game():
 
     aliens = Group()
 
-    the_game = TheGame(ai_settings, screen, ship, bullets)
-    the_game.creat_fleet(aliens)
+    the_game = TheGame(ai_settings, screen, ship, aliens, bullets)
+    the_game.creat_fleet()
 
     game_stats = GameStats(ai_settings)
 
@@ -40,15 +40,15 @@ def run_game():
     while True:
 
         # 监视键盘和鼠标事件
-        the_game.check_events(ai_settings, screen, game_stats, play_button, bullets)
+        the_game.check_events(game_stats, play_button)
 
         if game_stats.game_active:
             ship.update()
 
-            the_game.update_bullets(bullets, aliens)
-            the_game.update_aliens(game_stats, aliens)
+            the_game.update_bullets()
+            the_game.update_aliens(game_stats)
 
         # 每次循环时都重绘屏幕
-        the_game.update_screen(ai_settings, screen, game_stats, aliens, bullets, play_button)
+        the_game.update_screen(game_stats, play_button)
 
 run_game()
